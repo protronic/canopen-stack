@@ -51,7 +51,7 @@ static void COCSdoAbort(CO_CSDO *csdo, uint32_t err)
     csdo->Tfer.Abort = err;
 
     /* send the SDO timeout response */
-    if (err == CO_SDO_ERR_TIMEOUT) {
+    //if (err == CO_SDO_ERR_TIMEOUT) {
         CO_SET_ID  (&frm, csdo->TxId        );
         CO_SET_BYTE(&frm, 0x80,           0u);
         CO_SET_WORD(&frm, csdo->Tfer.Idx, 1u);
@@ -60,7 +60,7 @@ static void COCSdoAbort(CO_CSDO *csdo, uint32_t err)
         CO_SET_DLC (&frm,                 8u);
 
         (void)COIfCanSend(&csdo->Node->If, &frm);
-    }
+    //}
 }
 
 static void COCSdoReset(CO_CSDO *csdo, uint8_t num, struct CO_NODE_T *node)
