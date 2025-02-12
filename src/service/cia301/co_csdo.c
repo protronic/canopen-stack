@@ -235,7 +235,7 @@ static CO_ERR COCSdoInitUploadSegmented(CO_CSDO *csdo)
     Sub = CO_GET_BYTE(csdo->Frm, 3u);
 
     /* verify size, Idx, Sub */
-    if ((obj_size == csdo->Tfer.Size) &&
+    if ((obj_size <= csdo->Tfer.Size) && // NOTE: Strings werden nur bis zum Null-Terminator gesendet bzw. gelesen, deswegen <=
         (Idx == csdo->Tfer.Idx) &&
         (Sub == csdo->Tfer.Sub)) {
 
